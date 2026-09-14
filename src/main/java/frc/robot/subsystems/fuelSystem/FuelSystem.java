@@ -1,14 +1,13 @@
 package frc.robot.subsystems.fuelSystem;
 
+import static frc.robot.subsystems.fuelSystem.FuelSystemConstants.*;
+
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRXConfiguration;
-
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
-import static frc.robot.subsystems.fuelSystem.FuelSystemConstants.*;
 
 public class FuelSystem extends SubsystemBase {
   private TalonSRX intakeLauncher, feeder;
@@ -55,7 +54,9 @@ public class FuelSystem extends SubsystemBase {
   }
 
   public void adjustLauncherVoltage(double voltage) {
-    SmartDashboard.putNumber("Launch Launcher Voltage", SmartDashboard.getNumber("Launch Launcher Voltage", LAUNCH_LAUNCHER_VOLTAGE) + voltage);
+    SmartDashboard.putNumber(
+        "Launch Launcher Voltage",
+        SmartDashboard.getNumber("Launch Launcher Voltage", LAUNCH_LAUNCHER_VOLTAGE) + voltage);
 
     if (SmartDashboard.getNumber("Launch Launcher Voltage", LAUNCH_LAUNCHER_VOLTAGE) > 12) {
       SmartDashboard.putNumber("Launch Launcher Voltage", 12);
