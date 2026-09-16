@@ -133,16 +133,16 @@ public class ModuleIOSpark implements ModuleIO {
         .voltageCompensation(12.0);
     turnConfig
         .encoder
-        .inverted(turnEncoderInverted)
+        // .inverted(turnEncoderInverted)
         .positionConversionFactor(turnEncoderPositionFactor)
         .velocityConversionFactor(turnEncoderVelocityFactor)
-        .uvwMeasurementPeriod(10)
+        // .uvwMeasurementPeriod(10)
         .uvwAverageDepth(2);
     turnConfig
         .closedLoop
         .feedbackSensor(FeedbackSensor.kPrimaryEncoder)
-        // .positionWrappingEnabled(true)
-        // .positionWrappingInputRange(turnPIDMinInput, turnPIDMaxInput)
+        .positionWrappingEnabled(true)
+        .positionWrappingInputRange(turnPIDMinInput, turnPIDMaxInput)
         .pid(turnKp, 0.0, turnKd);
     turnConfig
         .signals
