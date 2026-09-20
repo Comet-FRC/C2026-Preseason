@@ -29,10 +29,10 @@ public class DriveConstants {
       };
 
   // Zeroed rotation values for each module, see setup instructions
-  public static final Rotation2d frontLeftZeroRotation = new Rotation2d(0.0);
-  public static final Rotation2d frontRightZeroRotation = new Rotation2d(0.0);
-  public static final Rotation2d backLeftZeroRotation = new Rotation2d(0.0);
-  public static final Rotation2d backRightZeroRotation = new Rotation2d(0.0);
+  public static final Rotation2d frontLeftZeroRotation = new Rotation2d(102.875);
+  public static final Rotation2d frontRightZeroRotation = new Rotation2d(102.857);
+  public static final Rotation2d backLeftZeroRotation = new Rotation2d(25.712);
+  public static final Rotation2d backRightZeroRotation = new Rotation2d(-51.413);
 
   // Device CAN IDs
   public static final int pigeonCanId = 21;
@@ -72,7 +72,7 @@ public class DriveConstants {
   public static final double driveSimKv = 0.0789;
 
   // Turn motor configuration
-  public static final boolean turnInverted = false;
+  public static final boolean turnInverted = true;
   public static final int turnMotorCurrentLimit = 20;
   public static final double turnMotorReduction = 150.0 / 7.0;
   public static final DCMotor turnGearbox = DCMotor.getNeo550(1);
