@@ -7,9 +7,11 @@
 
 package frc.robot.subsystems.drive;
 
+import static edu.wpi.first.units.Units.*;
 import static frc.robot.subsystems.drive.DriveConstants.*;
 import static frc.robot.util.SparkUtil.*;
 
+import com.ctre.phoenix6.hardware.CANcoder;
 import com.revrobotics.PersistMode;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.ResetMode;
@@ -41,6 +43,7 @@ public class ModuleIOSpark implements ModuleIO {
   private final SparkBase turnSpark;
   private final RelativeEncoder driveEncoder;
   private final RelativeEncoder turnEncoder;
+  private final CANcoder turnCANcoder;
 
   // Closed loop controllers
   private final SparkClosedLoopController driveController;
@@ -88,6 +91,17 @@ public class ModuleIOSpark implements ModuleIO {
             MotorType.kBrushless);
     driveEncoder = driveSpark.getEncoder();
     turnEncoder = turnSpark.getEncoder();
+
+    turnCANcoder =
+        new CANcoder(
+            switch (module) {
+              case 0 -> frontLeftCanCoderId;
+              case 1 -> frontRightCanCoderId;
+              case 2 -> backLeftCanCoderId;
+              case 3 -> backRightCanCoderId;
+              default -> 0;
+            });
+
     driveController = driveSpark.getClosedLoopController();
     turnController = turnSpark.getClosedLoopController();
 
@@ -159,6 +173,17 @@ public class ModuleIOSpark implements ModuleIO {
         () ->
             turnSpark.configure(
                 turnConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters));
+
+    tryUntilOk(
+        turnSpark,
+        5,
+        () ->
+            turnEncoder.setPosition(
+                turnCANcoder
+                    .getPosition()
+                    .getValue()
+                    .minus(zeroRotation.getMeasure())
+                    .in(Radians)));
 
     // Create odometry queues
     timestampQueue = SparkOdometryThread.getInstance().makeTimestampQueue();
