@@ -8,6 +8,7 @@
 package frc.robot;
 
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.GenericHID;
@@ -27,7 +28,6 @@ import frc.robot.subsystems.drive.ModuleIO;
 import frc.robot.subsystems.drive.ModuleIOSim;
 import frc.robot.subsystems.drive.ModuleIOSpark;
 import frc.robot.subsystems.fuelSystem.FuelSystem;
-
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 
 /**
@@ -87,8 +87,12 @@ public class RobotContainer {
 
     controller = new CometXboxController(0);
 
+    NamedCommands.registerCommand("Shoot", new LaunchSequence(fuelSystem));
+
     // Set up auto routines
     autoChooser = new LoggedDashboardChooser<>("Auto Choices", AutoBuilder.buildAutoChooser());
+
+    autoChooser.addOption("Middle Shoot", new LaunchSequence(fuelSystem).withTimeout(8));
 
     // Set up SysId routines
     autoChooser.addOption(
@@ -154,7 +158,6 @@ public class RobotContainer {
     controller.rightBumper().whileTrue(new Intake(fuelSystem));
     controller.leftBumper().whileTrue(new LaunchSequence(fuelSystem));
     controller.down().whileTrue(new Eject(fuelSystem));
-    
   }
 
   /**
