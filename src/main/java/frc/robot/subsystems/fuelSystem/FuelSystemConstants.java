@@ -5,8 +5,8 @@ public class FuelSystemConstants {
   public static final int CURRENT_LIMIT = 60;
   public static final int VOLT_COMP = 9;
 
-  public static final int INTAKE_LAUNCHER_ID = 25;
-  public static final int FEEDER_ID = 11;
+  public static final int INTAKE_LAUNCHER_ID = 13;
+  public static final int FEEDER_ID = 14;
 
   public static final int PEAK_CURRENT_LIMIT = 40;
   public static final int PEAK_CURRENT_DURATION = 1500;

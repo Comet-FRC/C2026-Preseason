@@ -14,15 +14,20 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
 import frc.robot.commands.DriveCommands;
+import frc.robot.commands.Eject;
+import frc.robot.commands.Intake;
+import frc.robot.commands.LaunchSequence;
+import frc.robot.controllers.CometXboxController;
 import frc.robot.subsystems.drive.Drive;
 import frc.robot.subsystems.drive.GyroIO;
 import frc.robot.subsystems.drive.GyroIOPigeon2;
 import frc.robot.subsystems.drive.ModuleIO;
 import frc.robot.subsystems.drive.ModuleIOSim;
 import frc.robot.subsystems.drive.ModuleIOSpark;
+import frc.robot.subsystems.fuelSystem.FuelSystem;
+
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 
 /**
@@ -34,9 +39,9 @@ import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 public class RobotContainer {
   // Subsystems
   private final Drive drive;
+  private final FuelSystem fuelSystem;
 
-  // Controller
-  private final CommandXboxController controller = new CommandXboxController(0);
+  private final CometXboxController controller;
 
   // Dashboard inputs
   private final LoggedDashboardChooser<Command> autoChooser;
@@ -77,6 +82,10 @@ public class RobotContainer {
                 new ModuleIO() {});
         break;
     }
+
+    fuelSystem = new FuelSystem();
+
+    controller = new CometXboxController(0);
 
     // Set up auto routines
     autoChooser = new LoggedDashboardChooser<>("Auto Choices", AutoBuilder.buildAutoChooser());
@@ -139,6 +148,13 @@ public class RobotContainer {
                             new Pose2d(drive.getPose().getTranslation(), Rotation2d.kZero)),
                     drive)
                 .ignoringDisable(true));
+
+    fuelSystem.setDefaultCommand(fuelSystem.run(() -> fuelSystem.stop()));
+
+    controller.rightBumper().whileTrue(new Intake(fuelSystem));
+    controller.leftBumper().whileTrue(new LaunchSequence(fuelSystem));
+    controller.down().whileTrue(new Eject(fuelSystem));
+    
   }
 
   /**
