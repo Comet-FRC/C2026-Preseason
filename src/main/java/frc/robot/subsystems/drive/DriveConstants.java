@@ -29,10 +29,10 @@ public class DriveConstants {
       };
 
   // Zeroed rotation values for each module, see setup instructions
-  public static final Rotation2d frontLeftZeroRotation = new Rotation2d(102.875);
-  public static final Rotation2d frontRightZeroRotation = new Rotation2d(102.857);
-  public static final Rotation2d backLeftZeroRotation = new Rotation2d(25.712);
-  public static final Rotation2d backRightZeroRotation = new Rotation2d(-51.413);
+  public static final Rotation2d frontLeftZeroRotation = new Rotation2d(20.631);
+  public static final Rotation2d frontRightZeroRotation = new Rotation2d(-70.404);
+  public static final Rotation2d backLeftZeroRotation = new Rotation2d(142.727);
+  public static final Rotation2d backRightZeroRotation = new Rotation2d(11.961);
 
   // Device CAN IDs
   public static final int pigeonCanId = 21;
@@ -47,10 +47,10 @@ public class DriveConstants {
   public static final int frontRightTurnCanId = 6;
   public static final int frontLeftTurnCanId = 8;
 
-  public static final int backLeftCanCoderId = 12;
-  public static final int backRightCanCoderId = 10;
-  public static final int frontRightCanCoderId = 9;
-  public static final int frontLeftCanCoderId = 11;
+  public static final int backLeftCanCoderId = 9;
+  public static final int backRightCanCoderId = 11;
+  public static final int frontRightCanCoderId = 12;
+  public static final int frontLeftCanCoderId = 10;
 
   // Drive motor configuration
   public static final int driveMotorCurrentLimit = 50;
@@ -83,13 +83,12 @@ public class DriveConstants {
   public static final DCMotor turnGearbox = DCMotor.getNeo550(1);
 
   // Turn encoder configuration
-  // TODO: don't need to invert because relative
-  // public static final boolean turnEncoderInverted = true;
+  public static final boolean turnEncoderInverted = true;
   public static final double turnEncoderPositionFactor = 2 * Math.PI; // Rotations -> Radians
   public static final double turnEncoderVelocityFactor = (2 * Math.PI) / 60.0; // RPM -> Rad/Sec
 
   // Turn PID configuration
-  public static final double turnKp = 2.0;
+  public static final double turnKp = 0.0;
   public static final double turnKd = 0.0;
   public static final double turnSimP = 8.0;
   public static final double turnSimD = 0.0;

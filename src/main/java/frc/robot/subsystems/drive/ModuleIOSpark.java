@@ -232,6 +232,19 @@ public class ModuleIOSpark implements ModuleIO {
     timestampQueue.clear();
     drivePositionQueue.clear();
     turnPositionQueue.clear();
+
+    if (this.turnEncoder.getVelocity() < 0.01) {
+      tryUntilOk(
+          turnSpark,
+          5,
+          () ->
+              turnEncoder.setPosition(
+                  turnCANcoder
+                      .getPosition()
+                      .getValue()
+                      .minus(zeroRotation.getMeasure())
+                      .in(Radians)));
+    }
   }
 
   @Override

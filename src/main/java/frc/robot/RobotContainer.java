@@ -27,7 +27,6 @@ import frc.robot.subsystems.drive.ModuleIO;
 import frc.robot.subsystems.drive.ModuleIOSim;
 import frc.robot.subsystems.drive.ModuleIOSpark;
 import frc.robot.subsystems.fuelSystem.FuelSystem;
-
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 
 /**
@@ -154,7 +153,6 @@ public class RobotContainer {
     controller.rightBumper().whileTrue(new Intake(fuelSystem));
     controller.leftBumper().whileTrue(new LaunchSequence(fuelSystem));
     controller.down().whileTrue(new Eject(fuelSystem));
-    
   }
 
   /**
