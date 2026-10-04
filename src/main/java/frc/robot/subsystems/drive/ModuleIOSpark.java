@@ -147,7 +147,7 @@ public class ModuleIOSpark implements ModuleIO {
         .voltageCompensation(12.0);
     turnConfig
         .encoder
-        // .inverted(turnEncoderInverted)
+        .inverted(turnEncoderInverted)
         .positionConversionFactor(turnEncoderPositionFactor)
         .velocityConversionFactor(turnEncoderVelocityFactor)
         // .uvwMeasurementPeriod(10)
@@ -211,7 +211,7 @@ public class ModuleIOSpark implements ModuleIO {
     ifOk(
         turnSpark,
         turnEncoder::getPosition,
-        (value) -> inputs.turnPosition = new Rotation2d(value).minus(zeroRotation));
+        (value) -> inputs.turnPosition = new Rotation2d(value)/* .minus(zeroRotation)*/);
     ifOk(turnSpark, turnEncoder::getVelocity, (value) -> inputs.turnVelocityRadPerSec = value);
     ifOk(
         turnSpark,
@@ -227,13 +227,13 @@ public class ModuleIOSpark implements ModuleIO {
         drivePositionQueue.stream().mapToDouble((Double value) -> value).toArray();
     inputs.odometryTurnPositions =
         turnPositionQueue.stream()
-            .map((Double value) -> new Rotation2d(value).minus(zeroRotation))
+            .map((Double value) -> new Rotation2d(value)/* .minus(zeroRotation)*/)
             .toArray(Rotation2d[]::new);
     timestampQueue.clear();
     drivePositionQueue.clear();
     turnPositionQueue.clear();
 
-    if (this.turnEncoder.getVelocity() < 0.01) {
+    /*if (this.turnEncoder.getVelocity() < 0.01) {
       tryUntilOk(
           turnSpark,
           5,
@@ -244,7 +244,7 @@ public class ModuleIOSpark implements ModuleIO {
                       .getValue()
                       .minus(zeroRotation.getMeasure())
                       .in(Radians)));
-    }
+    }*/
   }
 
   @Override
@@ -272,7 +272,7 @@ public class ModuleIOSpark implements ModuleIO {
   public void setTurnPosition(Rotation2d rotation) {
     double setpoint =
         MathUtil.inputModulus(
-            rotation.plus(zeroRotation).getRadians(), turnPIDMinInput, turnPIDMaxInput);
+            rotation/* .plus(zeroRotation)*/.getRadians(), turnPIDMinInput, turnPIDMaxInput);
     turnController.setSetpoint(setpoint, ControlType.kPosition);
   }
 }
