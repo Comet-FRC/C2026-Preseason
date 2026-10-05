@@ -7,11 +7,15 @@
 
 package frc.robot.subsystems.drive;
 
+import static edu.wpi.first.units.Units.Radians;
+import static edu.wpi.first.units.Units.RadiansPerSecond;
 import static frc.robot.subsystems.drive.DriveConstants.*;
 
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.units.measure.Angle;
+import edu.wpi.first.units.measure.AngularVelocity;
 import edu.wpi.first.wpilibj.Alert;
 import edu.wpi.first.wpilibj.Alert.AlertType;
 import org.littletonrobotics.junction.Logger;
@@ -85,12 +89,12 @@ public class Module {
 
   /** Returns the current drive position of the module in meters. */
   public double getPositionMeters() {
-    return inputs.drivePositionRad * wheelRadiusMeters;
+    return wheelRadiusMeters * (inputs.drivePositionRad.in(Radians));
   }
 
   /** Returns the current drive velocity of the module in meters per second. */
   public double getVelocityMetersPerSec() {
-    return inputs.driveVelocityRadPerSec * wheelRadiusMeters;
+    return (inputs.driveAngularVelocity.in(RadiansPerSecond)) * wheelRadiusMeters;
   }
 
   /** Returns the module position (turn angle and drive position). */
@@ -114,12 +118,12 @@ public class Module {
   }
 
   /** Returns the module position in radians. */
-  public double getWheelRadiusCharacterizationPosition() {
+  public Angle getWheelRadiusCharacterizationPosition() {
     return inputs.drivePositionRad;
   }
 
   /** Returns the module velocity in rad/sec. */
-  public double getFFCharacterizationVelocity() {
-    return inputs.driveVelocityRadPerSec;
+  public AngularVelocity getFFCharacterizationVelocity() {
+    return inputs.driveAngularVelocity;
   }
 }

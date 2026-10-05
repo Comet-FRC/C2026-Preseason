@@ -7,6 +7,8 @@
 
 package frc.robot.subsystems.drive;
 
+import static edu.wpi.first.units.Units.*;
+
 import com.pathplanner.lib.config.ModuleConfig;
 import com.pathplanner.lib.config.RobotConfig;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -29,10 +31,10 @@ public class DriveConstants {
       };
 
   // Zeroed rotation values for each module, see setup instructions
-  public static final Rotation2d frontLeftZeroRotation = new Rotation2d(20.631);
-  public static final Rotation2d frontRightZeroRotation = new Rotation2d(-70.404);
-  public static final Rotation2d backLeftZeroRotation = new Rotation2d(142.727);
-  public static final Rotation2d backRightZeroRotation = new Rotation2d(11.961);
+  public static final Rotation2d frontLeftZeroRotation = new Rotation2d(Radians.of(-1.11756));
+  public static final Rotation2d frontRightZeroRotation = new Rotation2d(Radians.of(-109.173921));
+  public static final Rotation2d backLeftZeroRotation = new Rotation2d(Radians.of(-6.197693));
+  public static final Rotation2d backRightZeroRotation = new Rotation2d(Radians.of(-20.416383));
 
   // Device CAN IDs
   public static final int pigeonCanId = 21;
@@ -84,11 +86,13 @@ public class DriveConstants {
 
   // Turn encoder configuration
   public static final boolean turnEncoderInverted = true;
-  public static final double turnEncoderPositionFactor = 2 * Math.PI / turnMotorReduction; // Rotations -> Radians
-  public static final double turnEncoderVelocityFactor = (2 * Math.PI) / 60.0 / turnMotorReduction; // RPM -> Rad/Sec
+  public static final double turnEncoderPositionFactor =
+      2 * Math.PI / turnMotorReduction; // Rotations -> Radians
+  public static final double turnEncoderVelocityFactor =
+      (2 * Math.PI) / 60.0 / turnMotorReduction; // RPM -> Rad/Sec
 
   // Turn PID configuration
-  public static final double turnKp = 0.0;
+  public static final double turnKp = 0.6;
   public static final double turnKd = 0.0;
   public static final double turnSimP = 8.0;
   public static final double turnSimD = 0.0;

@@ -275,7 +275,7 @@ public class Drive extends SubsystemBase {
   public double[] getWheelRadiusCharacterizationPositions() {
     double[] values = new double[4];
     for (int i = 0; i < 4; i++) {
-      values[i] = modules[i].getWheelRadiusCharacterizationPosition();
+      values[i] = modules[i].getWheelRadiusCharacterizationPosition().in(Radians);
     }
     return values;
   }
@@ -284,7 +284,7 @@ public class Drive extends SubsystemBase {
   public double getFFCharacterizationVelocity() {
     double output = 0.0;
     for (int i = 0; i < 4; i++) {
-      output += modules[i].getFFCharacterizationVelocity() / 4.0;
+      output += modules[i].getFFCharacterizationVelocity().baseUnitMagnitude() / 4.0;
     }
     return output;
   }

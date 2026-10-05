@@ -64,7 +64,7 @@ public class DriveCommands {
    * Field relative drive command using two joysticks (controlling linear and angular velocities).
    */
 
-   //TODO real method
+  // TODO real method
   public static Command joystickDrive(
       Drive drive,
       DoubleSupplier xSupplier,
@@ -101,8 +101,7 @@ public class DriveCommands {
         drive);
   }
 
-
-  //TODO made up method
+  // TODO made up method
   // public static Command joystickDrive(
   //     Drive drive,
   //     DoubleSupplier xSupplier,
