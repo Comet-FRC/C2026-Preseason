@@ -15,7 +15,7 @@ public class FuelSystemConstants {
   public static final double INTAKE_FEEDER_VOLTAGE = -12;
   public static final double INTAKE_INTAKE_VOLTAGE = 9;
 
-  public static final double LAUNCH_LAUNCHER_VOLTAGE = 9;
+  public static final double LAUNCH_LAUNCHER_VOLTAGE = 12;
   public static final double REV_LAUNCHER_TIMEOUT = 1;
 
   public static final double EJECT_FEEDER_VOLTAGE = 10;
