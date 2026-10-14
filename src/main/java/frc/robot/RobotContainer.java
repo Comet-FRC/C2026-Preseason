@@ -8,6 +8,7 @@
 package frc.robot;
 
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.GenericHID;
@@ -86,8 +87,12 @@ public class RobotContainer {
 
     controller = new CometXboxController(0);
 
+    NamedCommands.registerCommand("Shoot", new LaunchSequence(fuelSystem));
+
     // Set up auto routines
     autoChooser = new LoggedDashboardChooser<>("Auto Choices", AutoBuilder.buildAutoChooser());
+
+    autoChooser.addOption("Middle Shoot", new LaunchSequence(fuelSystem).withTimeout(8));
 
     // Set up SysId routines
     autoChooser.addOption(
