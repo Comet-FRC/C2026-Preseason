@@ -25,12 +25,13 @@ public class FuelSystem extends SubsystemBase {
     intakeLauncher.configVoltageCompSaturation(VOLT_COMP);
     intakeLauncher.enableVoltageCompensation(true);
     intakeLauncher.setNeutralMode(NeutralMode.Brake);
+    intakeLauncher.setInverted(true);
 
     feeder.configAllSettings(config);
     feeder.configVoltageCompSaturation(VOLT_COMP);
     feeder.enableVoltageCompensation(true);
     feeder.setNeutralMode(NeutralMode.Brake);
-    feeder.setInverted(true);
+    // feeder.setInverted(true);
 
     SmartDashboard.putNumber("Intake Intake Voltage", INTAKE_INTAKE_VOLTAGE);
     SmartDashboard.putNumber("Intake Feeder Voltage", INTAKE_FEEDER_VOLTAGE);
