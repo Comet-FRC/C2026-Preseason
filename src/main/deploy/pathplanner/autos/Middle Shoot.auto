@@ -27,61 +27,109 @@
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Jitter"
+                        "pathName": "Jitter left"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Jitter"
+                        "pathName": "Jitter right"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Jitter"
+                        "pathName": "Jitter left"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Jitter"
+                        "pathName": "Jitter right"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Jitter"
+                        "pathName": "Jitter left"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Jitter"
+                        "pathName": "Jitter right"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Jitter"
+                        "pathName": "Jitter left"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Jitter"
+                        "pathName": "Jitter right"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Jitter"
+                        "pathName": "Jitter left"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Jitter"
+                        "pathName": "Jitter right"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Jitter left"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Jitter right"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Jitter left"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Jitter right"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Jitter left"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Jitter right"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Jitter left"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Jitter right"
                       }
                     }
                   ]
