@@ -17,7 +17,7 @@ import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.util.Units;
 
 public class DriveConstants {
-  public static final double maxSpeedMetersPerSec = Units.feetToMeters(12.5);
+  public static final double maxSpeedMetersPerSec = Units.feetToMeters(15.1); // 12.5
   public static final double odometryFrequency = 100.0; // Hz
   public static final double trackWidth = Units.inchesToMeters(23.25);
   public static final double wheelBase = Units.inchesToMeters(23.25);
@@ -55,9 +55,10 @@ public class DriveConstants {
   public static final int frontLeftCanCoderId = 10;
 
   // Drive motor configuration
-  public static final int driveMotorCurrentLimit = 50;
+  public static final int driveMotorCurrentLimit = 75; // 50
   public static final double wheelRadiusMeters = Units.inchesToMeters(2);
-  public static final double driveMotorReduction = (50.0 * 19.0 * 45.0) / (14.0 * 25.0 * 15.0);
+  public static final double driveMotorReduction =
+      6.75; // (50.0 * 19.0 * 45.0) / (14.0 * 25.0 * 15.0)
   public static final DCMotor driveGearbox = DCMotor.getNeoVortex(1);
 
   // Drive encoder configuration
